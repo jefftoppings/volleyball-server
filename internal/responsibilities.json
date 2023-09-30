@@ -1,0 +1,96 @@
+{
+    "firstReferee": {
+        "responsibilities": [
+            "inspects the conditions of the playing area, the balls and other equipment",
+            "performs the toss with the team captains",
+            "controls the teams warming up",
+            "to issue warnings to the teams",
+            "to sanction misconduct and delays",
+            "the faults of the server and of the positions of the serving team, including the screen",
+            "the faults in playing the ball",
+            "the faults above the net, and the faulty contact of the player with the net, primarily (but not exclusively) on the attacker's side",
+            "the attack hit faults of the Libero and back-row players",
+            "the completed attack hit made by a player on a ball above the net height coming from an overhand pass with fingers by the Libero in his/ her front zone",
+            "the ball crossing completely the lower space under the net",
+            "the completed block by back row players or the attempted block by the Libero",
+            "the ball that crosses the net totally or partly outside of the crossing space to the opponent's court or contacts the antenna on his/her side of theplaying court",
+            "the served ball and the 3rd hit passing over or outside the antenna on his/ her side of the court",
+            "checks the score sheet and signs it last"
+        ]
+    },
+    "secondReferee": {
+        "responsibilities": [
+            "at the start of each set, at the change of courts in the deciding set, and whenever necessary, checks that the actual positions of the players on the court correspond to those on the line-up sheets",
+            "penetration into the opponent's court, and the space under the net",
+            "positional faults of the receiving team",
+            "the faulty contact of the player with the net primarily (but not exclusively) on the blocker's side and with the antenna on his/her side of the court",
+            "the completed block by back row players or the attempted block by the Libero; or the attack hit fault by back row players or by the Libero",
+            "the contact of the ball with an outside object",
+            "the contact of the ball with the floor when the first referee is not in position to see the contact",
+            "the ball that crosses the net totally or partly outside of the crossing space to the opponent's court or contacts the antenna on his/her side of the court",
+            "the served ball and the 3rd hit passing over or outside the antenna on his/ her side of the court",
+            "checks and signs the scoresheet and signs it second last"
+        ]
+    },
+    "challengeReferee": {
+        "responsibilities": [
+            "supervises the challenge process and ensures that it proceeds according to the challenge regulation in force",
+            "shall wear an official referee uniform while performing his/her functions related to the challenge process",
+            "after the challenge process, advises the first referee of the nature of the fault"
+        ]
+    },
+    "reserveReferee": {
+        "responsibilities": [
+            "wear an official referee uniform while performing his/her functions in reserve",
+            "replace the second referee in case of absence or in case that he/she is unable to continue his/her work or in case that the second referee becomes the first referee",
+            "control the substitution paddles (if they are in use), before the match and between sets",
+            "check the operation of the bench tablets before and between the sets, if there is a problem",
+            "assist the second referee in keeping the free zone clear",
+            "assist the second referee in instructing the expelled/disqualified team member to leave to the team's dressing room",
+            "control the substitute players in the warm-up area and on the bench",
+            "bring to the second referee four match balls, immediately after the presentation of the starting players and give the second referee a match ball after he/she has finished checking the player's standing position",
+            "assist the first referee with guiding the work of the moppers"
+        ]
+    },
+    "scorer": {
+        "responsibilities": [
+            "registers the data of the match and teams, including the names and numbers of the Liberos, according to the procedures in force, and obtains the signatures of the captains and the coaches",
+            "records the starting line-up of each team from the line-up sheet (or checks the data submitted electronically). If he/she fails to receive the line-up sheets on time, he/she immediately notifies this fact to the second referee",
+            "records the points scored",
+            "controls the serving order of each team and indicates any error to the referees immediately after the service hit",
+            "is empowered to acknowledge and announce requests for player substitutions by use of the buzzer, controlling their number, and records the substitutions and time-outs, informing the 2nd referee",
+            "notifies the referees of a request for regular game interruption that is out of order",
+            "announces to the referees the ends of the sets and the scoring of the 8th point in the deciding set",
+            "records misconduct warnings, sanctions and improper requests",
+            "records all other events as instructed by the 2nd referee, i.e. exceptional substitutions, recovery time, prolonged interruptions, external interference, re-designation, etc",
+            "controls the interval between sets",
+            "records the final result",
+            "in the case of protest, with the previous authorization of the first referee, writes or permits the team/game captain to write on the score sheet a statement on the incident being protested",
+            "signs the score sheet him/herself, before obtaining the signatures of the team captains and then the referees"
+        ]
+    },
+    "assistantScorer": {
+        "responsibilities": [
+            "prepares the Libero control sheet",
+            "prepares the reserve score sheet",
+            "record the details of the Libero replacements / re-designations",
+            "notifies the referees of any fault of the Libero replacement, by using the buzzer",
+            "operates the manual scoreboard on the scorer's table",
+            "checks that the scoreboards agree",
+            "if necessary, updates the reserve scoresheet and gives it to the scorer",
+            "signs the Libero control sheet and submits it for checking",
+            "signs the score sheet before the scorer and prior to the team captains and referees"
+        ]
+    },
+    "linesJudges": {
+        "responsibilities": [
+            "the ball “in” and “out” whenever the ball lands near their line(s)",
+            "the touches of “out” balls by the team receiving the ball",
+            "the ball touching the antenna, the served ball and the third hit of the team crossing the net outside the crossing space, etc",
+            "any player (except the server) stepping outside of his/her playing court at the moment of the service hit",
+            "the foot faults of the server",
+            "any contact with the top 80 cm of the antenna on their side of the court by any player during his/her action of playing the ball or interfering with the play",
+            "ball crossing the net outside the crossing space into opponent's court or touching the antenna on his/her side of the court"
+        ]
+    }
+}
