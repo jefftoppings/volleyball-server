@@ -8,30 +8,22 @@ import (
 )
 
 func TestListQuestions(t *testing.T) {
-	type args struct {
-		config *ListQuestionsConfig
-	}
 	tests := []struct {
-		name    string
-		args    args
-		want    []*common.Question
-		wantErr bool
+		name              string
+		numberOfQuestions int
+		want              []*common.Question
+		wantErr           bool
 	}{
 		{
-			name:    "should list questions",
-			args:    args{
-				config: &ListQuestionsConfig{
-					NumberOfQuestions: 25,
-					AllQuestions:      false,
-				},
-			},
-			want:    []*common.Question{},
-			wantErr: false,
+			name:              "should list questions",
+			numberOfQuestions: 25,
+			want:              []*common.Question{},
+			wantErr:           false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := ListQuestions(tt.args.config)
+			got, err := ListQuestions(tt.numberOfQuestions)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("ListQuestions() error = %v, wantErr %v", err, tt.wantErr)
 				return

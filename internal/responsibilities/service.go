@@ -9,11 +9,6 @@ import (
 	"github.com/jtoppings/volleyball-server/internal/common"
 )
 
-type ListQuestionsConfig struct {
-	NumberOfQuestions int
-	AllQuestions      bool
-}
-
 func readResponsibilitiesFromFile() (map[string][]string, error) {
 	file, err := os.Open("assets/responsibilities.json")
 	if err != nil {
@@ -46,11 +41,29 @@ func readResponsibilitiesFromFile() (map[string][]string, error) {
 	return responsibilities, nil
 }
 
-func ListQuestions(config *ListQuestionsConfig) ([]*common.Question, error) {
+func ListQuestions(numberOfQuestions int) ([]*common.Question, error) {
 	responsibilities, err := readResponsibilitiesFromFile();
 	if err != nil {
 		return nil, err
 	}
-	fmt.Printf("%+v", responsibilities)
-	return []*common.Question{}, nil
+
+	var allQuestions []*common.Question
+	for refereeType, duties := range responsibilities {
+		fmt.Printf("%s Responsibilities:\n", refereeType)
+		for _, duty := range duties {
+			allQuestions = append(allQuestions, &common.Question{
+				Question: duty,
+				Answer:   refereeType,
+			})
+		}
+	}
+
+	// Shuffle questions
+	common.ShuffleArray(allQuestions)
+
+	if numberOfQuestions != 0 {
+		allQuestions = allQuestions[:numberOfQuestions]
+	}
+
+	return allQuestions, nil
 }

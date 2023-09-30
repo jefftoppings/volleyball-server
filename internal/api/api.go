@@ -23,22 +23,7 @@ func ListResponsibilitiesQuestionsHandler(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	allQuestionsStr := r.URL.Query().Get("allQuestions")
-	allQuestions, err := strconv.ParseBool(allQuestionsStr)
-	if err != nil {
-		http.Error(w, "Invalid 'allQuestions' parameter", http.StatusBadRequest)
-		return
-	}
-
-	if numberOfQuestions == 0 && !allQuestions {
-		http.Error(w, "You must specify numberOfQuestions or allQuestions=true", http.StatusBadRequest)
-		return
-	}
-
-	questionsToReturn, err := responsibilities.ListQuestions(&responsibilities.ListQuestionsConfig{
-		NumberOfQuestions: numberOfQuestions,
-		AllQuestions:      allQuestions,
-	})
+	questionsToReturn, err := responsibilities.ListQuestions(numberOfQuestions)
 	if err != nil {
         errDescription := "Error listing questions: " + err.Error() 
 		http.Error(w, errDescription, http.StatusBadRequest)
