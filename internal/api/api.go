@@ -4,15 +4,12 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
+    "github.com/jtoppings/volleyball-server/internal/common"
+    "github.com/jtoppings/volleyball-server/internal/responsibilities"
 )
 
-type Question struct {
-	Question string `json:"question"`
-	Answer   string `json:"answer"`
-}
-
 type ListResponsibilitiesQuestionsResponse struct {
-	Questions []*Question `json:"questions"`
+	Questions []*common.Question `json:"questions"`
 }
 
 func ListResponsibilitiesQuestionsHandler(w http.ResponseWriter, r *http.Request) {
@@ -21,16 +18,29 @@ func ListResponsibilitiesQuestionsHandler(w http.ResponseWriter, r *http.Request
 	// Parse the 'numberOfQuestions' query parameter from the URL
 	numberOfQuestionsStr := r.URL.Query().Get("numberOfQuestions")
 	numberOfQuestions, err := strconv.Atoi(numberOfQuestionsStr)
-	if err != nil || numberOfQuestions == 0 {
+	if err != nil {
 		http.Error(w, "Invalid 'numberOfQuestions' parameter", http.StatusBadRequest)
 		return
 	}
 
+    allQuestionsStr := r.URL.Query().Get("allQuestions")
+    allQuestions, err := strconv.ParseBool(allQuestionsStr)
+    if err != nil {
+        http.Error(w, "Invalid 'allQuestions' parameter", http.StatusBadRequest)
+        return
+    }
+
+    if numberOfQuestions == 0 && !allQuestions {
+        http.Error(w, "You must specify numberOfQuestions or allQuestions=true", http.StatusBadRequest)
+        return
+    }
+
+    questionsToReturn := responsibilities.ListQuestions(&responsibilities.ListQuestionsConfig{
+    	NumberOfQuestions: numberOfQuestions,
+    	AllQuestions:      allQuestions,
+    })
 	response := &ListResponsibilitiesQuestionsResponse{
-		Questions: []*Question{{
-			Question: "Who performs the coin toss with the team captains at the start of the match?",
-			Answer:   "First Referee",
-		}},
+		Questions: questionsToReturn,
 	}
 
 	json.NewEncoder(w).Encode(response)
