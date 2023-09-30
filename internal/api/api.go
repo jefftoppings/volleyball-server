@@ -2,10 +2,10 @@ package api
 
 import (
 	"encoding/json"
+	"github.com/jtoppings/volleyball-server/internal/common"
+	"github.com/jtoppings/volleyball-server/internal/responsibilities"
 	"net/http"
 	"strconv"
-    "github.com/jtoppings/volleyball-server/internal/common"
-    "github.com/jtoppings/volleyball-server/internal/responsibilities"
 )
 
 type ListResponsibilitiesQuestionsResponse struct {
@@ -23,22 +23,27 @@ func ListResponsibilitiesQuestionsHandler(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-    allQuestionsStr := r.URL.Query().Get("allQuestions")
-    allQuestions, err := strconv.ParseBool(allQuestionsStr)
-    if err != nil {
-        http.Error(w, "Invalid 'allQuestions' parameter", http.StatusBadRequest)
-        return
-    }
+	allQuestionsStr := r.URL.Query().Get("allQuestions")
+	allQuestions, err := strconv.ParseBool(allQuestionsStr)
+	if err != nil {
+		http.Error(w, "Invalid 'allQuestions' parameter", http.StatusBadRequest)
+		return
+	}
 
-    if numberOfQuestions == 0 && !allQuestions {
-        http.Error(w, "You must specify numberOfQuestions or allQuestions=true", http.StatusBadRequest)
-        return
-    }
+	if numberOfQuestions == 0 && !allQuestions {
+		http.Error(w, "You must specify numberOfQuestions or allQuestions=true", http.StatusBadRequest)
+		return
+	}
 
-    questionsToReturn := responsibilities.ListQuestions(&responsibilities.ListQuestionsConfig{
-    	NumberOfQuestions: numberOfQuestions,
-    	AllQuestions:      allQuestions,
-    })
+	questionsToReturn, err := responsibilities.ListQuestions(&responsibilities.ListQuestionsConfig{
+		NumberOfQuestions: numberOfQuestions,
+		AllQuestions:      allQuestions,
+	})
+	if err != nil {
+        errDescription := "Error listing questions: " + err.Error() 
+		http.Error(w, errDescription, http.StatusBadRequest)
+	}
+
 	response := &ListResponsibilitiesQuestionsResponse{
 		Questions: questionsToReturn,
 	}
