@@ -15,8 +15,7 @@ type ListQuestionsConfig struct {
 }
 
 func readResponsibilitiesFromFile() (map[string][]string, error) {
-	// Open the JSON file for reading
-	file, err := os.Open("../../assets/responsibilities.json")
+	file, err := os.Open("assets/responsibilities.json")
 	if err != nil {
 		return nil, err
 	}
