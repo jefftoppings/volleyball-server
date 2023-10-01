@@ -1,19 +1,20 @@
 package main
 
 import (
-	"io"
-	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/jtoppings/volleyball-server/internal/api"
 )
 
 func main() {
-	// Hello world, the web server
+	router := mux.NewRouter()
 
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, world!\n")
-	}
+	// Define your API routes
+	router.HandleFunc("/api/listResponsibilitiesQuestions", api.ListResponsibilitiesQuestionsHandler).Methods("GET")
 
-	http.HandleFunc("/hello", helloHandler)
-    log.Println("Listening at http://localhost:8000/hello")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	http.Handle("/", router)
+
+	// Start the server
+	http.ListenAndServe(":8080", nil)
 }
