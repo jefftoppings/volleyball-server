@@ -49,7 +49,6 @@ func ListQuestions(numberOfQuestions int) ([]*common.Question, error) {
 
 	var allQuestions []*common.Question
 	for refereeType, duties := range responsibilities {
-		fmt.Printf("%s Responsibilities:\n", refereeType)
 		for _, duty := range duties {
 			allQuestions = append(allQuestions, &common.Question{
 				Question: duty,
